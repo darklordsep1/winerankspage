@@ -52,33 +52,41 @@
 <p>We then created a classification report to measure the quality of the predictions from our algorithm. The prediction label checks to see what percentage of predictions are correct, recall checks what percent of the positive cases were caught by the algorithm, F1 checks what percent of positive predictions were correct, and support is the number of actual occurrences of the class in the specified dataset. These values are split between red and white wines, 0 for red and 1 for white. Looking at the results, we have a high precision value and a high recall value. A high precision (78% of red wine and 86% of white wine) based on the scale that more than half of our data components have true positives over false positive values. Based on the results, there was also an indication of a high recall percentage (75% of red wine and 88% of white wine) which indicates that our dataset has more true negative values versus false negatives. This creates a better overall model as more false positives and false negatives can negatively skew our prediction accuracy. This can also be indicated by our high  f1-score (.76 for red wine and .87 for white wine), which is an effective indicator of precision and recall. </p>
 <img src="images/ClassificationReport.png">	
 
+<h2>Conclusions</h2>
+<p>From preprocessing the data components using PCA, we were able to receive accuracies of above 70% for each model. These results represent a strong indication that all of these algorithms can be used to predict wine quality. The success of these models can be attributed towards their strengths in handling large datasets with a lot of variability.</p>
+<p>Based on our best model accuracy of 83% from the Random Forest Classifier, we can attribute that our model can effectively predict wine quality based on a variety of different factors such as acidity, density, sugar and sulfur dioxide. </p>
+<p>In regards to the remaining gap of 17%, this can be attributed to the components being measured in the model. Since there was a set number of features included in the dataset, some of the other features that go into determining wine quality was omitted. Some of these features include opacity and viscosity. In addition to this, the dataset itself may not be representative of certain smells and tastes of wine that are deemed good quality by the general population. For future studies and research on the topic, it may be beneficial for these models to incorporate more features to effectively measure the quality. Although these models predict accuracy very well, our model does not predict the tastes, smells, and trends that society may have for certain factors of wine. For these measures, an incorporation into the dataset may be difficult but represents an important fact that wine quality is only as good as the wine drinker deems it to be. Altogether, our study concludes that the Random Forest Model most accurately predicted the key components to choose high quality wine.</p> 
+    
 <h2>References</h2>
 
 <p>
     1. Bajaj, Aayush. “What Does Your Classification Metric Tell about Your Data?” Medium, Towards Data Science, 24 Mar. 2021, https://towardsdatascience.com/what-does-your-classification-metric-tell-about-your-data-4a8f35408a8b.</p>
 <p>
-    2. Donges, Niklas. “A Complete Guide to the Random Forest Algorithm.” Built In, 2021, https://builtin.com/data-science/random-forest-algorithm. 
+    2. Brownlee, J. “Logistic regression for machine learning”. Machine Learning Mastery, April 27, 2022, https://machinelearningmastery.com/logistic-regression-for-machine-learning/.
 </p>
 <p>
-    3. Gambetta, Joanna M., et al. “Towards the Creation of a Wine Quality Prediction Index: Correlation of Chardonnay Juice and Wine Compositions from Different Regions and Quality Levels - Food Analytical Methods.” SpringerLink, Springer US, 15 Mar. 2016, https://link.springer.com/article/10.1007/s12161-016-0467-9#Sec2. 
+    3. Donges, Niklas. “A Complete Guide to the Random Forest Algorithm.” Built In, 2021, https://builtin.com/data-science/random-forest-algorithm. 
 </p>
 <p>
-    4. Jaitley, Urvashi. “Why Data Normalization Is Necessary for Machine Learning Models.” Medium, Medium, 9 Apr. 2019, https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029. 
+    4. Gambetta, Joanna M., et al. “Towards the Creation of a Wine Quality Prediction Index: Correlation of Chardonnay Juice and Wine Compositions from Different Regions and Quality Levels - Food Analytical Methods.” SpringerLink, Springer US, 15 Mar. 2016, https://link.springer.com/article/10.1007/s12161-016-0467-9#Sec2. 
 </p>
 <p>
-    5. Parmar, Raj. “Wine Quality.” Kaggle, 9 July 2018, https://www.kaggle.com/datasets/rajyellow46/wine-quality. 
+    5. Jaitley, Urvashi. “Why Data Normalization Is Necessary for Machine Learning Models.” Medium, Medium, 9 Apr. 2019, https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029. 
 </p>
 <p>
-    6. Shaw, Sweta. “Beginners Friendly - Comparison of Classifiers.” Kaggle, Kaggle, 4 Oct. 2021, https://www.kaggle.com/code/swetash/beginners-friendly-comparison-of-classifiers. 
+    6. Parmar, Raj. “Wine Quality.” Kaggle, 9 July 2018, https://www.kaggle.com/datasets/rajyellow46/wine-quality. 
 </p>
 <p>
-    7. Shin, Terence. “Predicting Wine Quality with Several Classification Techniques.” Medium, Towards Data Science, 4 Dec. 2021, https://towardsdatascience.com/predicting-wine-quality-with-several-classification-techniques-179038ea6434. 
+    7. Shaw, Sweta. “Beginners Friendly - Comparison of Classifiers.” Kaggle, Kaggle, 4 Oct. 2021, https://www.kaggle.com/code/swetash/beginners-friendly-comparison-of-classifiers. 
 </p>
 <p>
-    8. Sinton, T. H., et al. “Grape Juice Indicators for Prediction of Potential Wine Quality. I. Relationship between Crop Level, Juice and Wine Composition, and Wine Sensory Ratings and Scores.” American Journal of Enology and Viticulture, American Journal of Enology and Viticulture, 1 Jan. 1978, https://www.ajevonline.org/content/29/4/267. 
+    8. Shin, Terence. “Predicting Wine Quality with Several Classification Techniques.” Medium, Towards Data Science, 4 Dec. 2021, https://towardsdatascience.com/predicting-wine-quality-with-several-classification-techniques-179038ea6434. 
 </p>
 <p>
-    9. “Wine Quality Prediction Using Machine Learning: Predicting Wine Quality.” Analytics Vidhya, 27 Apr. 2021, https://www.analyticsvidhya.com/blog/2021/04/wine-quality-prediction-using-machine-learning/.
+    9. Sinton, T. H., et al. “Grape Juice Indicators for Prediction of Potential Wine Quality. I. Relationship between Crop Level, Juice and Wine Composition, and Wine Sensory Ratings and Scores.” American Journal of Enology and Viticulture, American Journal of Enology and Viticulture, 1 Jan. 1978, https://www.ajevonline.org/content/29/4/267. 
+</p>
+<p>
+    10. “Wine Quality Prediction Using Machine Learning: Predicting Wine Quality.” Analytics Vidhya, 27 Apr. 2021, https://www.analyticsvidhya.com/blog/2021/04/wine-quality-prediction-using-machine-learning/.
 </p>
 </body>
 </html>
