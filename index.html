@@ -18,58 +18,75 @@
 <p>This dataset comes from Kaggle. It combines two datasets that both relate to red and white variants of Portuguese “Vinho Verde” wine. It includes physicochemical and sensory variables. The classes of the data set are ordered and not balanced. There is no information listed about whether all the variables listed are applicable to determining the ranking of the wines.</p>
 
 <h2>Methods</h2>
-<h3>Handled null values by replacing it with the mean</h3>
-<p>Categorical data is easily understood by humans but machines cannot interpret and evaluate categorical data, so we have to convert the string data into numerical data. We wrote a method for preprocessing the string values in the dataframe into numerical values. First the categorical value ‘red’ was replaced with the numerical value ‘0’ and white was replaced with ‘1.’ For our analysis of the data, we have chosen to classify a wine as “good quality” if the given quality, between 0 and 10, is above 5. Therefore, the values for quality of wine were assigned based on their quality levels.</p>
 <h3>Preprocessed string values to numeric values in dataset</h3>
-<p>To create a more efficient model, we chose to replace the null values in the dataset. Those null values can hinder the performance and cause noise when running the prediction model. We used Dataframe.fillna() from the pandas’ library to replace all these null values with the mean of that particular column from the dataframe.</p>
+<p>Categorical data is easily understood by humans but machines cannot interpret and evaluate categorical data, so we have to convert the string data into numerical data. We wrote a method for preprocessing the string values in the dataframe into numerical values. First the categorical value ‘red’ was replaced with the numerical value ‘0’ and white was replaced with ‘1.’ For our analysis of the data, we have chosen to classify a wine as “good quality” if the given quality, between 0 and 10, is above 5. Therefore, the values for quality of wine were assigned based on their quality levels.</p>
+<h3>Handled null values by replacing them with the mean</h3>
+<p>To create a more efficient model, we chose to replace the null values in the dataset. Those null values can hinder the performance and cause noise when running the prediction model. We used Dataframe.fillna() from the pandas’ library to replace all these null values with the mean of that particular column from the dataframe. </p>
 <h3>Normalized dataset</h3>
-<p>To create a more efficient model, we chose to replace the null values in the dataset. Those null values can hinder the performance and cause noise when running the prediction model. We used Dataframe.fillna() from the pandas’ library to replace all these null values with the mean of that particular column from the dataframe.</p>
-<h3>Performed PCA with retained var = 0.97 on normalized dataset</h3>
-<p>PCA allows us to effectively preprocess our data components by cleaning the outside nose and creating principal components to better use for our supervised learning model. With our analysis, we chose 97% variance as it allows us to explain all of our principal components. After fitting and transforming the data, we return this revised dataframe.</p>
+<p>Normalization of the dataset is necessary as it alters the numeric values in each column to fit a common scale. This allows for data to be observed and analyzed by accounting for the differences in ranges of values. Every dataset does not require normalization, but our dataset does due to it having different features which have varied ranges. In order to do this, we first converted the columns of our dataset to a list format and created a MinMaxScaler object which alters features by scaling each one to the same range. We used this in our dataset and then converted it to a table format using pd.DataFrame().</p>
+<h3>Performed PCA with a retained variance of 97% on a normalized dataset</h3>
+<p>PCA allows us to effectively preprocess our data components by cleaning the outside noise and creating principal components for better use for our supervised learning model. With our analysis, we chose 97% variance as it allows us to explain all of our principal components. After fitting and transforming the data, we return this revised dataframe. </p>
 <h3>Performed random forest algorithm on the dataset</h3>
-<p>The random forest algorithm is a supervised machine learning algorithm that uses the “bagging” method, or combining multiple learning models, in order to obtain a more accurate and stable prediction. We used this algorithm because it can be used for classification problems, which is how we are viewing our dataset. This method uses the random forest classifier class. Then, it splits the features and target into train and test sets and computes the accuracy score. </p>
+<p>The random forest algorithm is a supervised machine learning algorithm that uses the “bagging” method, or combining multiple learning models, in order to obtain a more accurate and stable prediction. We used this algorithm because it can be used for classification problems, which is how we are viewing our dataset. This method uses the random forest classifier class. Then, it splits the features and target into train and test sets and computes the accuracy score.</p>
+<h3>Performed logistic regression on the dataset</h3>
+<p>Logistic Regression is based on the logistic function which is also called the sigmoid function. It’s an S shaped curve that maps a real-valued number into a value between zero and one. The zero represents failure or no and the one represents success or yes. Essentially, logistic regression models the probability of the default class using an equation. Logistic regression is typically used in classification problems, which is fitting for our project, when the dependent variable is dichotomous or categorical. After running the logistic regression method on our dataset, we received an accuracy of 73.23%.</p>
+<h3>Performed SGD on the dataset</h3>
+<p>Stochastic gradient descent implies a process linked with random probability. Using the entire dataset is useful in order to get a minimal amount of noise and randomness. However, if the dataset is too big, it is too computationally expensive to complete all samples for each iteration. Instead of using the entire dataset, SGD uses only one sample which is randomly shuffled and selected to perform. Because Stochastic Gradient Descent is typically noisier than a typical Gradient descent, it takes more iterations to reach the minima which is okay because it is still computationally less expensive than GD. After running the SGD method on our dataset, we received an accuracy of 74.15%.</p>
+<h3>Performed decision tree on the dataset</h3>
+<p>Decision tree algorithm essentially functions to make a training model that can predict the value of a target variable, and it does this by learning or inferring decision rules from the set of training data. The structure is similar to a tree with nodes and branches in which it starts from the root. The internal nodes represent attributes while the leaf nodes are class labels. It gives predictions based upon the series of splits that occur due to features. Essentially, the sub-nodes created allow for more homogenous data as it splits based upon similarity as mentioned before. After running the decision tree method on our dataset, we received an accuracy of 77.38%.</p>
 
 <h2>Results and Discussion</h2>
-<p>As interest in wine has increased, the wine industry has grown tremendously. Because of this, wine quality and quality certification have become a priority. </p>
-<h3>Created box plot including all features</h3>
-<p>In order to visualize the outliers in the dataset, we plotted a boxplot that included all the dataset features. Below you can see the general distribution of the data, and it is clear where the outliers for each of the features lie. We will handle the removal of these outliers in the final iteration of the project.</p>
+<p>Before we used any models, we first displayed our dataset to better illustrate the types of components for wine quality. </p>
 <img src="images/BoxPlot.png" width="800" height="350">	
-<h3>Normalized data, performed pca, performed random forest (obtained accuracy score)</h3>
-<p>After normalizing the data, performing PCA on the data, and performing random forest on the data, we had to evaluate our predictive model by finding an accuracy score. We obtained an accuracy score of 83.46%. The accuracy score is a measurement of how many labels the model predicted correctly. The value is the percentage of predictions that were correct out of the total number of predictions that the model made.</p>
+<p>We then preprocessed the data components by using PCA to clean the outside nose and create principal components to better use for our supervised learning model.  With our analysis, we chose 97% variance as it allows us to explain all of our principal components. After fitting and transforming the data, we ran all of the models. For our study, our team conducted 4 different model types to effectively measure wine quality. The 4 types of models we chose are the Random Forest, Logistic Regression, Stochastic Gradient, and Decision tree models. After running each model, we then ran a prediction function to record each model’s accuracy. </p>
+<p>Here are the accuracy results from these modeling algorithms:<br>
+    Accuracies: Random Forest Accuracy: 83.46%<br>
+    Logistic Regression Accuracy: 73.23%<br>
+    Stochastic Gradient Descent Accuracy: 74.15%<br>
+    Decision Tree Accuracy: 77.38%<br>
+    </p>
 <h3>Created a confusion matrix</h3>
-<p>To quantify the number of the classifier’s predictions were right, we created a confusion matrix. For those predictions that were incorrect, the confusion matrix displays where in fact the classifier made an incorrect prediction. We can observe in our created confusion matrix when the actual label and predicted label match in addition to when the classifier mislabeled observations.</p>
+<p>Based on these accuracies, we can conclude that the Random Forest model performed the best.  To further analyze this data, we created a confusion matrix to plot any inaccuracies in the data predictions.  For those predictions that were incorrect, the confusion matrix displays where in fact the classifier made an incorrect prediction. We can observe in our created confusion matrix when the actual label and predicted label match in addition to when the classifier mislabeled observations.  The two rows represent the actual data predictions. The two columns represent the predicted data predictions. From the confusion matrix, we can analyze that 735 correct predictions were made with the actual performance. </p>
 <img src="images/ConfusionMatrix.png">
 <h3>Created a classification report</h3>
 <p>We then created a classification report to measure the quality of the predictions from our algorithm. The prediction label checks to see what percentage of predictions are correct, recall checks what percent of the positive cases were caught by the algorithm, F1 checks what percent of positive predictions were correct, and support is the number of actual occurrences of the class in the specified dataset. These values are split between red and white wines, 0 for red and 1 for white. Looking at the results, we have a high precision value and a high recall value. A high precision (78% of red wine and 86% of white wine) based on the scale that more than half of our data components have true positives over false positive values. Based on the results, there was also an indication of a high recall percentage (75% of red wine and 88% of white wine) which indicates that our dataset has more true negative values versus false negatives. This creates a better overall model as more false positives and false negatives can negatively skew our prediction accuracy. This can also be indicated by our high  f1-score (.76 for red wine and .87 for white wine), which is an effective indicator of precision and recall. </p>
 <img src="images/ClassificationReport.png">	
 
+<h2>Conclusions</h2>
+<p>From preprocessing the data components using PCA, we were able to receive accuracies of above 70% for each model. These results represent a strong indication that all of these algorithms can be used to predict wine quality. The success of these models can be attributed towards their strengths in handling large datasets with a lot of variability.</p>
+<p>Based on our best model accuracy of 83% from the Random Forest Classifier, we can attribute that our model can effectively predict wine quality based on a variety of different factors such as acidity, density, sugar and sulfur dioxide. </p>
+<p>In regards to the remaining gap of 17%, this can be attributed to the components being measured in the model. Since there was a set number of features included in the dataset, some of the other features that go into determining wine quality was omitted. Some of these features include opacity and viscosity. In addition to this, the dataset itself may not be representative of certain smells and tastes of wine that are deemed good quality by the general population. For future studies and research on the topic, it may be beneficial for these models to incorporate more features to effectively measure the quality. Although these models predict accuracy very well, our model does not predict the tastes, smells, and trends that society may have for certain factors of wine. For these measures, an incorporation into the dataset may be difficult but represents an important fact that wine quality is only as good as the wine drinker deems it to be. Altogether, our study concludes that the Random Forest Model most accurately predicted the key components to choose high quality wine.</p> 
+    
 <h2>References</h2>
 
 <p>
     1. Bajaj, Aayush. “What Does Your Classification Metric Tell about Your Data?” Medium, Towards Data Science, 24 Mar. 2021, https://towardsdatascience.com/what-does-your-classification-metric-tell-about-your-data-4a8f35408a8b.</p>
 <p>
-    2. Donges, Niklas. “A Complete Guide to the Random Forest Algorithm.” Built In, 2021, https://builtin.com/data-science/random-forest-algorithm. 
+    2. Brownlee, J. “Logistic regression for machine learning”. Machine Learning Mastery, April 27, 2022, https://machinelearningmastery.com/logistic-regression-for-machine-learning/.
 </p>
 <p>
-    3. Gambetta, Joanna M., et al. “Towards the Creation of a Wine Quality Prediction Index: Correlation of Chardonnay Juice and Wine Compositions from Different Regions and Quality Levels - Food Analytical Methods.” SpringerLink, Springer US, 15 Mar. 2016, https://link.springer.com/article/10.1007/s12161-016-0467-9#Sec2. 
+    3. Donges, Niklas. “A Complete Guide to the Random Forest Algorithm.” Built In, 2021, https://builtin.com/data-science/random-forest-algorithm. 
 </p>
 <p>
-    4. Jaitley, Urvashi. “Why Data Normalization Is Necessary for Machine Learning Models.” Medium, Medium, 9 Apr. 2019, https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029. 
+    4. Gambetta, Joanna M., et al. “Towards the Creation of a Wine Quality Prediction Index: Correlation of Chardonnay Juice and Wine Compositions from Different Regions and Quality Levels - Food Analytical Methods.” SpringerLink, Springer US, 15 Mar. 2016, https://link.springer.com/article/10.1007/s12161-016-0467-9#Sec2. 
 </p>
 <p>
-    5. Parmar, Raj. “Wine Quality.” Kaggle, 9 July 2018, https://www.kaggle.com/datasets/rajyellow46/wine-quality. 
+    5. Jaitley, Urvashi. “Why Data Normalization Is Necessary for Machine Learning Models.” Medium, Medium, 9 Apr. 2019, https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029. 
 </p>
 <p>
-    6. Shaw, Sweta. “Beginners Friendly - Comparison of Classifiers.” Kaggle, Kaggle, 4 Oct. 2021, https://www.kaggle.com/code/swetash/beginners-friendly-comparison-of-classifiers. 
+    6. Parmar, Raj. “Wine Quality.” Kaggle, 9 July 2018, https://www.kaggle.com/datasets/rajyellow46/wine-quality. 
 </p>
 <p>
-    7. Shin, Terence. “Predicting Wine Quality with Several Classification Techniques.” Medium, Towards Data Science, 4 Dec. 2021, https://towardsdatascience.com/predicting-wine-quality-with-several-classification-techniques-179038ea6434. 
+    7. Shaw, Sweta. “Beginners Friendly - Comparison of Classifiers.” Kaggle, Kaggle, 4 Oct. 2021, https://www.kaggle.com/code/swetash/beginners-friendly-comparison-of-classifiers. 
 </p>
 <p>
-    8. Sinton, T. H., et al. “Grape Juice Indicators for Prediction of Potential Wine Quality. I. Relationship between Crop Level, Juice and Wine Composition, and Wine Sensory Ratings and Scores.” American Journal of Enology and Viticulture, American Journal of Enology and Viticulture, 1 Jan. 1978, https://www.ajevonline.org/content/29/4/267. 
+    8. Shin, Terence. “Predicting Wine Quality with Several Classification Techniques.” Medium, Towards Data Science, 4 Dec. 2021, https://towardsdatascience.com/predicting-wine-quality-with-several-classification-techniques-179038ea6434. 
 </p>
 <p>
-    9. “Wine Quality Prediction Using Machine Learning: Predicting Wine Quality.” Analytics Vidhya, 27 Apr. 2021, https://www.analyticsvidhya.com/blog/2021/04/wine-quality-prediction-using-machine-learning/.
+    9. Sinton, T. H., et al. “Grape Juice Indicators for Prediction of Potential Wine Quality. I. Relationship between Crop Level, Juice and Wine Composition, and Wine Sensory Ratings and Scores.” American Journal of Enology and Viticulture, American Journal of Enology and Viticulture, 1 Jan. 1978, https://www.ajevonline.org/content/29/4/267. 
+</p>
+<p>
+    10. “Wine Quality Prediction Using Machine Learning: Predicting Wine Quality.” Analytics Vidhya, 27 Apr. 2021, https://www.analyticsvidhya.com/blog/2021/04/wine-quality-prediction-using-machine-learning/.
 </p>
 </body>
 </html>
